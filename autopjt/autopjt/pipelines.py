@@ -18,10 +18,22 @@ class AutopjtPipeline(object):
         self.file = codecs.open("/home/mata/dataex/data.json", "wb", encoding='utf-8')
 
     def process_item(self, item, spider):
-        i = json.dumps(dict(item), ensure_ascii=False)
-        line = i + '\n'
-        # 把数据写入data.json
-        self.file.write(line)
+        # i = json.dumps(dict(item), ensure_ascii=False)
+        # line = i + '\n'
+        # # 把数据写入data.json
+        # self.file.write(line)
+        for j in range(0, len(item['name'])):
+            name = item['name'][j]
+            price = item['price'][j]
+            link = item['link'][j]
+            comnum = item['comnum'][j]
+            goods = {"name": name, "price": price, "link": link, "comnum": comnum}
+
+            i = json.dumps(goods, ensure_ascii=False)
+            line = i + "\n"
+
+            # 把数据写入data.json
+            self.file.write(line)
         return item
 
     def close_spider(self, spider):
