@@ -10,5 +10,9 @@ import scrapy
 
 class AutopjtItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    name = scrapy.Field()
+    price = scrapy.Field()
+    # link用于存储商品链接
+    link = scrapy.Field()
+    # comnum用来存储商品评论数
+    comnum = scrapy.Field()
